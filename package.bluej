@@ -2,10 +2,10 @@
 dependency1.from=AOC_2017_7
 dependency1.to=Node2
 dependency1.type=UsesDependency
-editor.fx.0.height=0
-editor.fx.0.width=0
-editor.fx.0.x=0
-editor.fx.0.y=0
+editor.fx.0.height=1408
+editor.fx.0.width=2576
+editor.fx.0.x=-8
+editor.fx.0.y=-8
 objectbench.height=148
 objectbench.width=2536
 package.divider.horizontal=0.6
