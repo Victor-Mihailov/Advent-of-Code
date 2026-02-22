@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=AOC_2024_12
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=map\ gone\ i\ j
+comment2.target=int[]\ direction(char[][],\ boolean[][],\ int,\ int)
+numComments=3

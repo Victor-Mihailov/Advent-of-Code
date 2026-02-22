@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=AOC_2024_7
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=big\ nums
+comment2.target=boolean\ bob(long,\ long[])
+numComments=3
