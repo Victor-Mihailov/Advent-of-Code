@@ -32,18 +32,19 @@ public class AOC_2025_7
             for(int x = 0; x < length; x = x + 1)
             {
                 System.out.print(map[x][y]);
-                if (map[x][y] != 2)continue;
+                if (map[x][y] >= 2)
+                {
+                    if(map[x][y + 1] == 1) // broken?
+                    {
+                        map[x - 1][y + 1] = (map[x - 1][y + 1] == 0) ? 2 : map[x - 1][y + 1] + map[x][y] - 1;
+                        map[x + 1][y + 1] = (map[x + 1][y + 1] == 0) ? 2 : map[x + 1][y + 1] + map[x][y] - 1;
+                    }
+                    else
+                    {
+                        map[x][y + 1] = (map[x][y + 1] == 0) ? 2 : map[x][y + 1] + map[x][y] - 1;
+                    }
+                }
                 
-                if(map[x][y + 1] == 1)
-                {
-                    map[x - 1][y + 1] = 2;
-                    map[x + 1][y + 1] = 2;
-                    answer = answer + 1;
-                }
-                else
-                {
-                    map[x][y + 1] = 2;
-                }
             }
         }
         // code below is for bug fixxing
