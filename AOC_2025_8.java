@@ -44,13 +44,16 @@ public class AOC_2025_8
                     int[] pair = new int[2];
                     pair[0] = i;
                     pair[1] = i + j;
+                    choosen = (line < smallest && lineList.contains(pair) == false) ? pair : choosen;
+                    System.out.println(choosen[0]);
                     smallest = (line < smallest && lineList.contains(pair) == false) ? line : smallest;
                     
-                    choosen = (line < smallest && lineList.contains(pair) == false) ? pair : choosen;
+                    
                 }
             }
-            lineList.add(0, choosen);
-            System.out.println(choosen[1]);
+            lineList.add(choosen);
+            
+            //System.out.println(choosen[0]);
         }
         
         
