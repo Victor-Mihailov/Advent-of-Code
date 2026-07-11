@@ -13,6 +13,12 @@ public class AOC_2025_2
         String line = scn.nextLine();
         String[] ranges = line.split(",");
         
+        if(answer < Integer.parseInt(ranges[1]))
+        {
+            answer = Integer.parseInt(ranges[1]);
+        }
+        
+        /*
         for(int i = 0; i < ranges.length; i = i + 1)
         {
             long cid = Long.parseLong(ranges[i].substring(0, ranges[i].indexOf("-"))); // curent id
@@ -63,7 +69,7 @@ public class AOC_2025_2
                 sh = Long.parseLong(cidw.substring(cidw.length() / 2));
             }
         }
-        
+        */
         System.out.println(answer);
     }
 }
