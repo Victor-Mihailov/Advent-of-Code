@@ -2,4 +2,6 @@
 comment0.target=AOC_2022_9
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
-numComments=2
+comment2.params=xF\ yF\ xB\ yB
+comment2.target=void\ display(int,\ int,\ int,\ int)
+numComments=3
