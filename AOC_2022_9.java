@@ -10,26 +10,26 @@ public class AOC_2022_9
          // I am going to comment my code cause I have no clue what to do.
         int answer = 0; // Answer is the thing that will be printed. It is supposed to be the number of unique tiles the tail has visited.
         ArrayList<String> instructions = new ArrayList<String>(); // The instructions on where the head should go.
-        for(int i = 0; i < 8; i = i + 1)
+        while(scn.hasNextLine()) // While loop to go over the imput. 
         {
-            String ogScaned = scn.nextLine();
-            instructions.add(ogScaned);
+            instructions.add(scn.nextLine()); // Adding the imput to a use able list
         }
         
-        for(int b = 0; b < 53; b = b + 1) // 9????
-        {
-            answer = 1;
-            ArrayList<String> path = new ArrayList<String>();
-            int xF = 0;
+        for(int b = 0; b < 10; b = b + 1) // A for loop to do every segment of the rope. 10 because there are 10 segments.
+         {
+            answer = 1; // This is to take into acount that the starting position counts to the total positions reached.
+            ArrayList<String> path = new ArrayList<String>(); // 'Path' is the marking of the positions reached.
+            int xF = 0; // xF is the 
             int xB = 0;
             int yF = 0;
             int yB = 0;
             String tale = xB + " " + yB;
             path.add(tale);
             ArrayList<String> directions = new ArrayList<String>();
+            display(xF, yF, xB, yB, b);
             for(int c = 0; c < instructions.size(); c = c + 1)
             {
-                //display(xF, yF, xB, yB);
+                //display(xF, yF, xB, yB, b);
                 
                 //System.out.println(xB);
                 Scanner scan = new Scanner(instructions.get(c));
@@ -157,19 +157,15 @@ public class AOC_2022_9
         System.out.println(answer);
     }
     
-    public static void display (int xF, int yF, int xB, int yB)
+    public static void display (int xF, int yF, int xB, int yB, int b)
     {
-        for(int y = 50; y >= -50; y = y - 1) // ????? y
+        for(int y = 15; y >= -5; y = y - 1) // ????? y
         {
-            for(int x = -50; x < 50; x = x + 1)
+            for(int x = -11; x < 14; x = x + 1)
             {
                 if(x == xF && y == yF)
                 {
-                    System.out.print("H");
-                }
-                else if(x == xB && y == yB)
-                {
-                    System.out.print("T");
+                    System.out.print(b);
                 }
                 else
                 {
