@@ -14,153 +14,55 @@ public class AOC_2022_9
         
         int answer = 0; // Answer is the thing that will be printed. It is supposed to be the number of unique tiles the tail has visited.
         ArrayList<String> instructions = new ArrayList<String>(); // The instructions on where the head should go.
+        int[][] points = new int[2][10];
         while(scn.hasNextLine()) // While loop to go over the imput. 
         {
-            instructions.add(scn.nextLine()); // Adding the imput to a use able list
+            instructions.add(scn.nextLine()); // Adding the imput to a useable list
         }
         
-        for(int b = 0; b < 10; b = b + 1) // A for loop to do every segment of the rope. 10 because there are 10 segments.
-         {
-            answer = 1; // This is to take into acount that the starting position counts to the total positions reached.
-            ArrayList<String> path = new ArrayList<String>(); // 'Path' is the marking of the positions reached.
-            int xF = 0; // xF is the x posision of the leading segment.
-            int xB = 0; // xB is the x posision of the following segment.
-            int yF = 0; // yF is the y posisoin of the leading segmant.
-            int yB = 0; // yB is the y posisoin of the following segmant.
-            String tale = xB + " " + yB; // By combining the x and y posisions of the following segments the tale is made.
-            path.add(tale); // This adds 0,0 to the locations visited.
-            ArrayList<String> directions = new ArrayList<String>(); // Is a temp way to store the the instructions for the next segment.
-            //display(xF, yF, xB, yB, b);
-            for(int c = 0; c < instructions.size(); c = c + 1) // A for loop to go over the instructions. Note - Can be made into a while loop.
-            {
-                //display(xF, yF, xB, yB, b);
-                
-                //System.out.println(xB);
-                Scanner scan = new Scanner(instructions.get(c)); // A new scanner to go over a line of instructions.
-                String scaned = scan.next();  // Scanning the first part of the line to tell which derection.
-                if(scaned.equals("R")) // Cheaks if the direction of travel is right.
-                {
-                    // System.out.println(xB);
-                    scaned = scan.next(); // Scans to see the distents travaled right.
-                    for(int m = 0; m < Integer.parseInt(scaned); m = m + 1) // Goes over moving one position at a time, based on the total positions needed to be moved. Note - This whole thing could probely be done in a better way.
-                    {
-                        xF = xF + 1; //  
-                        if(xB + 1 < xF)
-                        {
-                            xB = xB + 1;
-                            if(yB < yF)
-                            {
-                                directions.add("U 1");
-                            }
-                            else if(yB > yF)
-                            {
-                                directions.add("D 1");
-                            }
-                            yB = yF;
-                            directions.add("R 1");
-                            tale = xB + " " + yB;
-                            if(path.contains(tale) == false)
-                            {
-                                answer = answer + 1;
-                                path.add(tale); //
-                            }
-                        }
-                    }
-                }
-                else if(scaned.equals("L"))
-                {
-                    // System.out.println(xB);
-                    scaned = scan.next();
-                    for(int m = 0; m < Integer.parseInt(scaned); m = m + 1)
-                    {
-                        xF = xF - 1;
-                        if(xB - 1 > xF)
-                        {
-                            xB = xB - 1;
-                            if(yB < yF)
-                            {
-                                directions.add("U 1");
-                            }
-                            else if(yB > yF)
-                            {
-                                directions.add("D 1");
-                            }
-                            yB = yF;
-                            directions.add("L 1");
-                            tale = xB + " " + yB;
-                            if(path.contains(tale) == false)
-                            {
-                                answer = answer + 1;
-                                path.add(tale);// 
-                            }
-                        }
-                    }
-                }
-                else if(scaned.equals("U"))
-                {
-                    scaned = scan.next();
-                    for(int m = 0; m < Integer.parseInt(scaned); m = m + 1)
-                    {
-                        yF = yF + 1;
-                        if(yB + 1 < yF)
-                        {
-                            yB = yB + 1;
-                            if(xB < xF)
-                            {
-                                directions.add("R 1");
-                            }
-                            else if(xB > xF)
-                            {
-                                directions.add("L 1");
-                            }
-                            xB = xF;
-                            directions.add("U 1");
-                            tale = xB + " " + yB;
-                            if(path.contains(tale) == false)
-                            {
-                                answer = answer + 1;
-                                path.add(tale); // 
-                            }
-                        }
-                    }
-                }
-                else if(scaned.equals("D"))
-                {
-                    scaned = scan.next();
-                    for(int m = 0; m < Integer.parseInt(scaned); m = m + 1)
-                    {
-                        yF = yF - 1;
-                        if(yB - 1 > yF)
-                        {
-                            yB = yB - 1;
-                            if(xB < xF)
-                            {
-                                directions.add("R 1");
-                            }
-                            else if(xB > xF)
-                            {
-                                directions.add("L 1");
-                            }
-                            xB = xF;
-                            directions.add("D 1");
-                            tale = xB + " " + yB;
-                            if(path.contains(tale) == false)
-                            {
-                                answer = answer + 1;
-                                path.add(tale); // 
-                            }
-                        }
-                    }
-                }
-            }
+        HashSet<String> visited = new HashSet<String>(); // 'Path' is the marking of the positions reached.
+        for(int c = 0; c < instructions.size(); c = c + 1) // A for loop to go over the instructions. Note - Can be made into a while loop.
+        {            
+            Scanner scan = new Scanner(instructions.get(c)); // A new scanner to go over a line of instructions
+            String direction = scan.next();                  // Scanning the first part of the line to tell which direction
+            int repititions = Integer.parseInt(scan.next()); // The number of steps to take in the given direction
             
-            path.clear();
-            instructions = directions;
+            for(int m = 0; m < repititions; m = m + 1) // Goes over moving one position at a time, based on the total positions needed to be moved. Note - This whole thing could probely be done in a better way.
+            {
+                if(direction.equals("R")) // Cheaks if the direction of travel is right.
+                {
+                    points[0][0] = points[0][0] + 1;
+                }
+                else if(direction.equals("L"))
+                {
+                    points[0][0] = points[0][0] - 1;
+                }
+                else if(direction.equals("U"))
+                {
+                    points[1][0] = points[1][0] + 1;
+                }
+                else if(direction.equals("D"))
+                {
+                    points[1][0] = points[1][0] - 1;
+                }
+                
+                for(int step = 0; step < 9; step = step + 1)
+                {
+                    int[] change = distanceToMove(points, step);
+                    points[0][step + 1] = points[0][step + 1] + change[0];
+                    points[1][step + 1] = points[1][step + 1] + change[1];
+                }
+                
+                visited.add(points[0][9] + "," + points[1][9]);
+            }
         }
         
-        System.out.println(answer);
+        // path.clear();
+        
+        
+        System.out.println(visited.size());
     }
-    
+    /*
     public static void display (int xF, int yF, int xB, int yB, int b)
     {
         for(int y = 15; y >= -5; y = y - 1) // ????? y
@@ -179,5 +81,21 @@ public class AOC_2022_9
             System.out.println();
         }
         System.out.println();
+    }
+    */
+    public static int[] distanceToMove(int[][] points, int step)
+    {
+        int x = points[0][step] - points[0][step + 1];
+        int y = points[1][step] - points[1][step + 1];
+        
+        if(x == 2 || x == -2 || y == 2 || y == -2)
+        {
+            x = (x == 0) ? 0 : (x / Math.abs(x));
+            y = (y == 0) ? 0 : (y / Math.abs(y));
+        
+            return (new int[]{x, y});
+        }
+        
+        return (new int[]{0,0});
     }
 }

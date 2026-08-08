@@ -2,6 +2,7 @@
 comment0.target=AOC_2022_9
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
-comment2.params=xF\ yF\ xB\ yB\ b
-comment2.target=void\ display(int,\ int,\ int,\ int,\ int)
+comment2.params=points\ step
+comment2.target=int[]\ distanceToMove(int[][],\ int)
+comment2.text=\r\n\ \ \ \ public\ static\ void\ display\ (int\ xF,\ int\ yF,\ int\ xB,\ int\ yB,\ int\ b)\r\n\ \ \ \ {\r\n\ \ \ \ \ \ \ \ for(int\ y\ \=\ 15;\ y\ >\=\ -5;\ y\ \=\ y\ -\ 1)\ //\ ?????\ y\r\n\ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ for(int\ x\ \=\ -11;\ x\ <\ 14;\ x\ \=\ x\ +\ 1)\r\n\ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(x\ \=\=\ xF\ &&\ y\ \=\=\ yF)\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ System.out.print(b);\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ else\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ {\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ System.out.print(".");\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ System.out.println();\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ System.out.println();\r\n\ \ \ \ }\r\n
 numComments=3
