@@ -21,8 +21,20 @@ public class AOC_2022_18
            answer = answer - area[x][y][z];
            cubes[x][y][z] = true;
            answer = answer + 6;
+           if(x != 0)
+           {
+               area[x - 1][y][z] = area[x - 1][y][z] + 2;
+           }
+           area[x + 1][y][z] = area[x + 1][y][z] + 2;
+           area[x][y - 1][z] = area[x][y - 1][z] + 2;
+           area[x][y + 1][z] = area[x][y + 1][z] + 2;
            
-           // change the spots surronding the new cube.
+           if(z != 0)
+           {
+               area[x][y][z - 1] = area[x][y][z - 1] + 2;
+           }
+           
+           area[x][y][z + 1] = area[x][y][z + 1] + 2;
         }
         
         System.out.println(answer);
